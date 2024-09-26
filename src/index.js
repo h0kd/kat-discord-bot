@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Client, IntentsBitField } = require("discord.js");
+const { Client, IntentsBitField, EmbedBuilder } = require("discord.js");
 
 const client = new Client({
 	intents: [
@@ -41,6 +41,30 @@ client.on("interactionCreate", (interaction) => {
 		const num2 = interaction.options.get("second-number").value;
 
 		interaction.reply(`The sum is ${num1 + num2}`);
+	}
+
+	if (interaction.commandName === "kat") {
+		const embed = new EmbedBuilder()
+			.setTitle("Kat")
+			.setDescription(
+				"Hiii! I'm Kat, a Discord bot who is learning how to do stuff :3"
+			)
+			.setColor(0xe31243)
+			.addFields(
+				{
+					name: "Commands list",
+					value: "!!!cmds",
+					inline: true,
+				},
+				{
+					name: "Waos",
+					value: "idk what to put here...",
+					inline: true,
+				}
+			)
+			.setImage("https://i.imgur.com/G6wsAl8.png");
+
+		interaction.reply({ embeds: [embed] });
 	}
 });
 
